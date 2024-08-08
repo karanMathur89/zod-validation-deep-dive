@@ -26,6 +26,8 @@ const otherLinks: TLink[] = [
   },
 ]
 
+const objectLinks: TLink[] = [{ name: "Objects", href: "/objects" }]
+
 export default function SideNav() {
   const pathname = usePathname()
   return (
@@ -43,6 +45,11 @@ export default function SideNav() {
       <LinkGroup
         title="Others"
         links={otherLinks}
+        pathname={pathname}
+      />
+      <LinkGroup
+        title="Objects"
+        links={objectLinks}
         pathname={pathname}
       />
     </nav>
