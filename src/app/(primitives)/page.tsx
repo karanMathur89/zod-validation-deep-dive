@@ -1,9 +1,8 @@
 import { z } from "zod"
-import Heading from "@/components/heading"
-import Output from "@/components/output"
+import ZodSection from "@/components/zod-section"
 
 //* SCHEMAS
-// const stringSchema = z
+// const StringSchema = z
 //   .string()
 //   .trim()
 //   .includes("bc")
@@ -13,24 +12,22 @@ import Output from "@/components/output"
 
 const StringSchema = z
   .string()
-  .email()
+  .email({ message: "HAS to be an email!!" })
+  .startsWith("test")
   .refine((value) =>
     // value.endsWith(".com") || value.endsWith(".in") || value.endsWith(".uk"),
     value.match(/.com|.in|.uk$/i),
   )
 
-//* TYPE
-type TString = z.infer<typeof StringSchema>
-
+//* TEST DATA
 const testData = "test-email@example.iN"
-const parsedData = StringSchema.safeParse(testData)
 
 export default function Home() {
   return (
-    <main>
-      <Heading>Strings</Heading>
-
-      <Output>{parsedData}</Output>
-    </main>
+    <ZodSection
+      title="Strings"
+      schema={StringSchema}
+      testData={testData}
+    />
   )
 }
