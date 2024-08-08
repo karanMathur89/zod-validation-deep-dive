@@ -4,13 +4,11 @@ import ZodSection from "@/components/zod-section"
 const fishes = ["salmon", "tuna", "trout"] as const
 
 //* SCHEMAS
-const FishEnum = z.enum(fishes)
+const FishEnum = z
+  .enum(fishes)
+  .refine((val) => val.startsWith("s"), { message: "Must start with s" })
 
 const testData = "salmon"
-
-const options = FishEnum.Values
-
-console.log({ options })
 
 export default function EnumsPage() {
   return (

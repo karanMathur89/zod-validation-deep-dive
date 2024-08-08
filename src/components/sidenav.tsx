@@ -15,6 +15,17 @@ const primitivesLinks: TLink[] = [
 ]
 const enumsLinks: TLink[] = [{ name: "Enums", href: "/enums" }]
 
+const otherLinks: TLink[] = [
+  {
+    name: "Literals",
+    href: "/literals",
+  },
+  {
+    name: "Optionals",
+    href: "/optionals",
+  },
+]
+
 export default function SideNav() {
   const pathname = usePathname()
   return (
@@ -27,6 +38,11 @@ export default function SideNav() {
       <LinkGroup
         title="Enums"
         links={enumsLinks}
+        pathname={pathname}
+      />
+      <LinkGroup
+        title="Others"
+        links={otherLinks}
         pathname={pathname}
       />
     </nav>
@@ -44,14 +60,14 @@ function LinkGroup({
 }) {
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold leading-none">{title}</h2>
+      <h2 className="text-xl font-medium leading-none">{title}</h2>
       <ul className="flex flex-col gap-2">
         {links.map((link) => (
           <li key={link.name}>
             <Link
               href={link.href}
               className={cn([
-                ["font-medium text-gray-500"],
+                ["text-gray-500"],
                 {
                   "text-gray-950": pathname === link.href,
                 },
