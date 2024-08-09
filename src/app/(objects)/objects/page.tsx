@@ -28,14 +28,14 @@ type PickedAgeAndGender = z.infer<typeof PickedAgeAndGenderSchema>
 
 //? passthrough
 const PassthroughObjectSchema = ObjectSchema.passthrough()
-console.log(
-  PassthroughObjectSchema.safeParse({
-    name: "Joe",
-    age: 21,
-    gender: "male",
-    region: "Asia/Kolkata", // extra key
-  }),
-)
+// console.log(
+//   PassthroughObjectSchema.safeParse({
+//     name: "Joe",
+//     age: 21,
+//     gender: "male",
+//     region: "Asia/Kolkata", // extra key
+//   }),
+// )
 
 //* TEST DATA
 const testData = {
@@ -44,7 +44,7 @@ const testData = {
   // gender: "male",
 }
 
-export default function OptionalsPage() {
+export default function OBjectsPage() {
   return (
     <ZodSection
       title="Objects"
